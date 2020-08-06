@@ -225,7 +225,8 @@ static void hmap_print(gpointer key, gpointer value, gpointer func_p) {
     if(key!=NULL && value!=NULL){
         shadow_page *page = (shadow_page *)value;
         for(int i=0;i<PAGE_SIZE;i=i+SHD_SIZE_u64){
-            if(page->bitmap[i]!=0){
+            uint64_t shadow = *(uint64_t *)&(page->bitmap[i]);
+            if(shadow!=0){
                 uint64_t addr = SHD_assemble_addr((uint64_t)key,(uint64_t)i);
                 print_func((gpointer)&addr,(gpointer)&page->bitmap[i]);
             }

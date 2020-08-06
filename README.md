@@ -12,3 +12,4 @@ This is a taint analysis tool on top of Qemu version 4. The tool is a Qemu plugi
      x86_64-linux-user/qemu-x86_64 -d plugin -D [/PATH/TO/shadow.log] -plugin tests/plugin/libtaint.so,arg=hint [PATH/TO/BINARY]
      
 Currently, only the input from the keyboard is considered as a taint source. To change the code, see the file in tests/plugin/taint.c
+After the execution, [/PATH/TO/shadow.log] will containt the taint information (and debug information if configured so) of the live memory addresses.

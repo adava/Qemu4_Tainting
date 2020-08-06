@@ -394,7 +394,10 @@ static void taint_cb_JUMP(unsigned int cpu_index, void *udata) {
     INIT_ARG(arg,udata);
     DEBUG_OUTPUT(arg,"taint_cb_JUMP");
     arg->src.type = MEMORY;
-    SHD_value jmp_addr = SHD_get_shadow(arg->src);
+    SHD_value jmp_addr = 0;
+    if(arg->src.type != IMMEDIATE){
+        jmp_addr = SHD_get_shadow(arg->src);
+    }
     jmp_addr!=0?(err=1):(err=0);
     OUTPUT_ERROR(err,arg,"JUMP *** address 0x%lx is tainted ***");
     if(arg->operation==COND_JMP){
@@ -415,7 +418,10 @@ static void taint_cb_CALL(unsigned int cpu_index, void *udata) {
     OUTPUT_ERROR(err,arg,"CALL error storing the eip taint");
     //check the destination address
     arg->src.type = MEMORY;
-    SHD_value jmp_addr = SHD_get_shadow(arg->src);
+    SHD_value jmp_addr = 0;
+    if(arg->src.type != IMMEDIATE){
+        jmp_addr = SHD_get_shadow(arg->src);
+    }
     jmp_addr!=0?(err=1):(err=0);
     OUTPUT_ERROR(err,arg,"CALL *** destination function address is tainted ***");
 //    printf("leaving taint_cb_CALL\n");
