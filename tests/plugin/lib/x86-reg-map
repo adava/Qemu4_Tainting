@@ -1,0 +1,157 @@
+typedef enum x86_reg {
+//    X86_REG_INVALID = 0,
+    X86_REG_AH, // R_AH
+    X86_REG_AL, //R_AL
+    X86_REG_AX, //R_EAX
+    X86_REG_BH, //R_BH
+    X86_REG_BL, //R_BL
+    X86_REG_BP, //R_EBP
+    X86_REG_BPL, //R_EBP
+    X86_REG_BX, //R_EBX
+    X86_REG_CH, //R_CH
+    X86_REG_CL, //R_CL
+    X86_REG_CS,
+    X86_REG_CX, //R_ECX
+    X86_REG_DH, //R_DH
+    X86_REG_DI, //R_EDI
+    X86_REG_DIL, //R_EDI
+    X86_REG_DL, //R_DL
+    X86_REG_DS,
+    X86_REG_DX, //R_EDX
+    X86_REG_EAX, //R_EAX
+    X86_REG_EBP, //R_EBP
+    X86_REG_EBX, //R_EBX
+    X86_REG_ECX, //R_ECX
+    X86_REG_EDI, //R_EDI
+    X86_REG_EDX, //R_EDX
+    X86_REG_EFLAGS,
+    X86_REG_EIP,
+    X86_REG_EIZ,
+    X86_REG_ES, //R_ESI
+    X86_REG_ESI, //R_ESI
+    X86_REG_ESP, //R_ESP
+    X86_REG_FPSW,
+    X86_REG_FS,
+    X86_REG_GS,
+    X86_REG_IP,
+    X86_REG_RAX, //R_EAX
+    X86_REG_RBP, //R_EBP
+    X86_REG_RBX, //R_EBX
+    X86_REG_RCX, //R_ECX
+    X86_REG_RDI, //R_EDI
+    X86_REG_RDX, //R_EDX
+	X86_REG_RIP,
+	X86_REG_RIZ,
+    X86_REG_RSI, //R_ESI
+    X86_REG_RSP, //R_ESP
+    X86_REG_SI, //R_ESI
+    X86_REG_SIL, //R_ESI
+    X86_REG_SP, //R_ESP
+    X86_REG_SPL, //R_ESP
+    X86_REG_SS,
+	X86_REG_CR0,
+	X86_REG_CR1,
+	X86_REG_CR2,
+	X86_REG_CR3,
+	X86_REG_CR4,
+	X86_REG_CR5,
+	X86_REG_CR6,
+	X86_REG_CR7,
+	X86_REG_CR8,
+	X86_REG_CR9,
+	X86_REG_CR10,
+	X86_REG_CR11,
+	X86_REG_CR12,
+	X86_REG_CR13,
+	X86_REG_CR14,
+	X86_REG_CR15,
+	X86_REG_DR0,
+	X86_REG_DR1,
+	X86_REG_DR2,
+	X86_REG_DR3,
+	X86_REG_DR4,
+	X86_REG_DR5,
+	X86_REG_DR6,
+	X86_REG_DR7,
+	X86_REG_FP0,
+	X86_REG_FP1,
+	X86_REG_FP2,
+	X86_REG_FP3,
+	X86_REG_FP4,
+	X86_REG_FP5,
+	X86_REG_FP6,
+	X86_REG_FP7,
+	X86_REG_K0,
+	X86_REG_K1,
+	X86_REG_K2,
+	X86_REG_K3,
+	X86_REG_K4,
+	X86_REG_K5,
+	X86_REG_K6,
+	X86_REG_K7,
+	X86_REG_MM0,
+	X86_REG_MM1,
+	X86_REG_MM2,
+	X86_REG_MM3,
+	X86_REG_MM4,
+	X86_REG_MM5,
+	X86_REG_MM6,
+	X86_REG_MM7,
+    X86_REG_R8, //R_R8
+    X86_REG_R9, //R_R9
+    X86_REG_R10, //R_R10
+    X86_REG_R11, //R_R11
+    X86_REG_R12, //R_R12
+    X86_REG_R13, //R_R13
+    X86_REG_R14, //R_R14
+    X86_REG_R15, //R_R15
+    X86_REG_ENDING		// <-- mark the end of the list of registers
+}
+
+The mapping:
+
+cap reg=1 -> qemu reg=4
+cap reg=2 -> qemu reg=0
+cap reg=3 -> qemu reg=0
+cap reg=4 -> qemu reg=7
+cap reg=5 -> qemu reg=3
+cap reg=6 -> qemu reg=5
+cap reg=7 -> qemu reg=5
+cap reg=8 -> qemu reg=3
+cap reg=9 -> qemu reg=5
+cap reg=10 -> qemu reg=1
+cap reg=12 -> qemu reg=1
+cap reg=13 -> qemu reg=6
+cap reg=14 -> qemu reg=7
+cap reg=15 -> qemu reg=7
+cap reg=16 -> qemu reg=2
+cap reg=18 -> qemu reg=2
+cap reg=19 -> qemu reg=0
+cap reg=20 -> qemu reg=5
+cap reg=21 -> qemu reg=3
+cap reg=22 -> qemu reg=1
+cap reg=23 -> qemu reg=7
+cap reg=24 -> qemu reg=2
+cap reg=28 -> qemu reg=6
+cap reg=29 -> qemu reg=6
+cap reg=30 -> qemu reg=4
+cap reg=35 -> qemu reg=0
+cap reg=36 -> qemu reg=5
+cap reg=37 -> qemu reg=3
+cap reg=38 -> qemu reg=1
+cap reg=39 -> qemu reg=7
+cap reg=40 -> qemu reg=2
+cap reg=43 -> qemu reg=6
+cap reg=44 -> qemu reg=4
+cap reg=45 -> qemu reg=6
+cap reg=46 -> qemu reg=6
+cap reg=47 -> qemu reg=4
+cap reg=48 -> qemu reg=4
+cap reg=98 -> qemu reg=8
+cap reg=99 -> qemu reg=9
+cap reg=100 -> qemu reg=10
+cap reg=101 -> qemu reg=11
+cap reg=102 -> qemu reg=12
+cap reg=103 -> qemu reg=13
+cap reg=104 -> qemu reg=14
+cap reg=105 -> qemu reg=15
